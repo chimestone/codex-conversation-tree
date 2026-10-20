@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>对话枝图 · 项目工作台</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="brand-mark" aria-hidden="true">⑂</span><div><strong>对话枝图</strong><small>让每条思路，都有来处</small></div></div>
+    <span class="local-badge"><i></i> 本地工作台</span>
+  </header>
+  <main>
+    <section class="heading">
+      <div><span class="eyebrow">CONVERSATION ATLAS</span><h1>看见对话的脉络。</h1><p>从一个想法出发，找到每一条延伸的分支。</p></div>
+      <button id="refresh" class="button refresh">↻ <span>刷新数据</span></button>
+    </section>
+    <div id="error" class="message error" role="alert" hidden></div>
+    <div id="warnings" class="message warning" hidden></div>
+    <section class="workspace" aria-label="对话工作台">
+      <div class="project-bar">
+        <label class="project-label">当前项目<select id="project" aria-label="当前项目" disabled><option>正在读取项目…</option></select></label>
+        <div class="project-metrics"><strong id="thread-count">—</strong><span>个对话</span><strong id="branch-count">—</strong><span>条分叉</span></div>
+      </div>
+      <div class="toolbar">
+        <div class="tabs" role="tablist" aria-label="视图">
+          <button id="real-tab" role="tab" aria-selected="true">真实分支</button>
+          <button id="group-tab" role="tab" aria-selected="false">我的分组</button>
+        </div>
+        <label class="search"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="搜索对话标题…" aria-label="搜索对话标题"></label>
+      </div>
+      <div class="view-bar">
+        <span id="view-caption">按照真实分叉来源连接</span>
+        <div class="view-actions">
+          <button id="new-folder" class="text-button" hidden>＋ 新建文件夹</button>
+          <button id="expand" class="text-button">展开全部</button>
+          <button id="collapse" class="text-button">折叠全部</button>
+          <label class="archive"><input id="archive" type="checkbox"> 显示归档</label>
+        </div>
+      </div>
+      <div class="content">
+        <section class="tree-pane" aria-label="对话树">
+          <div class="project-root"><div><strong id="root-title">读取中</strong><small id="root-path">正在连接本地数据</small></div><span class="growth-hint">分支向右生长 →</span></div>
+          <div class="graph-controls" aria-label="画布缩放">
+            <span>虚线：项目归属 · 实线：父子关系</span>
+            <div><button id="zoom-out" aria-label="缩小">−</button><output id="zoom-label">100%</output><button id="zoom-in" aria-label="放大">＋</button><button id="zoom-fit">适应画布</button></div>
+          </div>
+          <div id="graph-viewport" tabindex="0" aria-label="分支画布，可横向及纵向滚动">
+            <div id="graph-space"><div id="tree" class="tree graph" aria-live="polite"></div></div>
+          </div>
+          <div id="empty" class="empty" hidden><span>⑂</span><h2>这里还没有对话</h2><p>在 Codex 中开始一个对话，再回来刷新。</p></div>
+        </section>
+        <aside id="details" class="details" aria-label="节点详情"><div class="detail-placeholder"><span>↖</span><h2>沿着思路，继续探索</h2><p>选择一个对话，查看来源、更新时间与所在目录。</p></div></aside>
+      </div>
+      <footer class="workspace-footer"><span id="read-time">尚未读取</span><span>仅读取元数据 · 手动刷新</span></footer>
+    </section>
+    <p class="footnote">真实分支保留对话来源；我的分组只改变你的整理方式。</p>
+  </main>
+  <dialog id="folder-dialog">
+    <form id="folder-form">
+      <h2 id="folder-dialog-title">新建文件夹</h2>
+      <label>名称<input id="folder-name" required maxlength="100" autocomplete="off"></label>
+      <label>上级文件夹<select id="folder-parent"></select></label>
+      <p id="folder-error" class="dialog-error" role="alert"></p>
+      <div class="dialog-actions"><button type="button" id="folder-cancel" class="button">取消</button><button type="submit" class="button primary">保存</button></div>
+    </form>
+  </dialog>
+  <dialog id="delete-dialog">
+    <h2>删除这个文件夹？</h2>
+    <p>其中的对话和子文件夹会移到上一级。对话本身不会被删除。</p>
+    <div class="dialog-actions"><button id="delete-cancel" class="button">取消</button><button id="delete-confirm" class="button danger">删除文件夹</button></div>
+  </dialog>
+  <div id="toast" role="status" hidden></div>
+  <script type="module" src="/app.mjs"></script>
+</body>
+</html>

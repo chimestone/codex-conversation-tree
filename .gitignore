@@ -1,0 +1,7 @@
+data/
+*.log
+node_modules/
+# Local acceptance notes and screenshots contain personal conversation metadata.
+docs/*.png
+docs/plan.md
+docs/verification.md
