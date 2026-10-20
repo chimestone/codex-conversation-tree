@@ -3,6 +3,12 @@
   "private": true,
   "type": "module",
   "version": "1.0.0",
+  "description": "Local-first Codex conversation branch viewer with project grouping and a zoomable tree.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chimestone/codex-conversation-tree.git"
+  },
   "engines": { "node": ">=24.0.0" },
   "scripts": {
     "start": "node server.mjs",

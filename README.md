@@ -1,8 +1,17 @@
 # 对话枝图
 
+Codex Conversation Tree · 非官方本地工具 · MIT License · Windows / Node.js 24+
+
 在 Codex 的独立浏览器面板里查看项目对话的真实分支，并用独立文件夹整理对话。仅本机运行，无需安装第三方依赖。
 
 ## 启动
+
+下载本仓库 ZIP 并解压，或克隆：
+
+```powershell
+git clone https://github.com/chimestone/codex-conversation-tree.git
+cd codex-conversation-tree
+```
 
 需要 Node.js 24 或更新版本。已在 Windows + Node.js 24.13.1 上验证。
 
@@ -69,3 +78,9 @@ node --test
 ## 项目定位
 
 这是非官方的 Codex 本地辅助工具，不修改 Codex 原生侧栏。当前为 Windows 首版，依赖 Codex 的本地内部存储格式；不能承诺与所有客户端版本兼容。上传代码到 GitHub 不等于把面板部署上线：面板仍需要在拥有本地 Codex 数据的电脑上运行。
+
+## 开源与反馈
+
+采用 [MIT License](LICENSE)，允许使用、修改和商业使用，分发时保留许可证及版权声明。
+
+欢迎通过 Issue 报告问题或通过 Pull Request 改进。报告读取失败时请提供 Node.js 版本、操作系统和脱敏错误信息，不要上传真实会话文件、数据库或包含个人信息的截图。当前测试仅覆盖 Windows 已验证的数据结构；其他平台尚未验证。
